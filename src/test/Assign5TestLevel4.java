@@ -39,17 +39,17 @@ public class Assign5TestLevel4 extends TestCase {
        		tuple = root.next();
 			
 			if(cnt == 0){
-				System.out.println(tuple.getAttributeValue(0));
+				//System.out.println(tuple.getAttributeValue(0));
 				assertTrue(tuple.getAttributeValue(0).equals("\"Eric\""));
 				cnt++;
 			}
 			else if(cnt == 1){
-				System.out.println(tuple.getAttributeValue(0));
+				//System.out.println(tuple.getAttributeValue(0));
 				assertTrue(tuple.getAttributeValue(0).equals("\"Chris\""));
 				cnt++;
 			}
 			else if(cnt == 2){
-				System.out.println(tuple.getAttributeValue(0));
+				//System.out.println(tuple.getAttributeValue(0));
 				assertTrue(tuple.getAttributeValue(0).equals("\"Chr\""));
 				cnt++;
 			}

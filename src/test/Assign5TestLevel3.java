@@ -33,7 +33,7 @@ public class Assign5TestLevel3 extends TestCase {
        root = tree.structureTree();
        
        tuple = root.next();
-       System.out.println(tuple.getAttributeValue(0));
+      // System.out.println(tuple.getAttributeValue(0));
        while(tuple != null){
        	if(next == false)
        		tuple = root.next();
