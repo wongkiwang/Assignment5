@@ -7,7 +7,8 @@ public class Projection extends Operator{
 	private String attributePredicate;
 
 
-	public Projection(Operator child, String attributePredicate){ 
+	public Projection(Operator child, String attributePredicate){
+		
 		this.attributePredicate = attributePredicate;
 		this.child = child;
 		newAttributeList = new ArrayList<Attribute>();
@@ -21,21 +22,8 @@ public class Projection extends Operator{
      */
 	@Override
 	public Tuple next(){
-		Tuple t = child.next();
-		Tuple a = null;
-		if (t!=null){
-			for(int i=0;i<t.getAttributeList().size();i++){
-				if(t.getAttributeName(i).equals(attributePredicate)){
-					newAttributeList.clear();
-					newAttributeList.add(t.getAttributeList().get(i));
-					a = new Tuple(newAttributeList);
-			//		System.out.println(newAttributeList.size());
-				}
-			}
-			return a;
-		}
-		return null;
 		//Delete the lines below and add your code here
+		return null;
 		
 	}
 		
@@ -48,7 +36,5 @@ public class Projection extends Operator{
 	public ArrayList<Attribute> getAttributeList(){
 		return child.getAttributeList();
 	}
-	
 
 }
-
