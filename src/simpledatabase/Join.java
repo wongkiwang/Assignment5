@@ -17,7 +17,7 @@ public class Join extends Operator{
 		tuples1 = new ArrayList<Tuple>();
 		
 	}
-
+	
 	
 	/**
      * It is used to return a new tuple which is already joined by the common attribute
@@ -25,10 +25,31 @@ public class Join extends Operator{
      */
 	//The record after join with two tables
 	@Override
+
 	public Tuple next(){
-		//Delete the lines below and add your code here
+		ArrayList<Tuple> tuples2;
+		tuples2 = new ArrayList<Tuple>();
+		Tuple c = leftChild.next();  //Student//
+		Tuple b = rightChild.next(); //Enroll//
+		Tuple turn = null;
+		int c_location = 0;
+		int b_location = 2;
+		while(c!=null){
+			tuples1.add(c);
+			c = leftChild.next();
+		}
+		int count = tuples1.size();
+		while(b!=null){
+			for(int i=0;i<count;i++){
+				if((tuples1.get(i).getAttributeValue(c_location)).equals(b.getAttributeValue(b_location))){
+					turn = new Tuple(tuples1.get(i).getAttributeList());
+					return turn;
+				}
+			}
+		}
 		return null;
-	}
+		}
+	
 	
 	
 	/**

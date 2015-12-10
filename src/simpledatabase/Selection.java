@@ -25,9 +25,24 @@ public class Selection extends Operator{
      */
 	@Override
 	public Tuple next(){
-		//Delete the lines below and add your code here
-		return null;
-			
+		Tuple t = child.next();
+		int count = 0 ;
+		if(child.from.equals(whereTablePredicate)){
+		while (t!=null){
+			for(int i=0;i<t.getAttributeList().size();i++){
+				if(t.getAttributeName(i).equals(whereAttributePredicate)){
+					if(t.getAttributeValue(i).equals(whereValuePredicate)&&count==0){
+					return t;
+					}
+					}
+				}
+			t = child.next();
+		}
+		}
+		else{
+			return t;
+		}
+		return null;	
 	}
 	
 	/**
@@ -41,3 +56,4 @@ public class Selection extends Operator{
 
 	
 }
+

@@ -1,5 +1,6 @@
 package simpledatabase;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public class Sort extends Operator{
 	
@@ -23,7 +24,65 @@ public class Sort extends Operator{
      */
 	@Override
 	public Tuple next(){
+		ArrayList<Tuple> tuple1;
+		ArrayList<Tuple> tuple2;
+		tuple1 = new ArrayList<Tuple>();
+		tuple2 = new ArrayList<Tuple>();
 		//Delete the lines below and add your code here
+		Tuple c =child.next();
+		Tuple turn = null;
+		Tuple buffer = null;
+		int a;
+		int b;
+		while(c!=null){
+			tuplesResult.add(c);
+			c = child.next();
+		}
+		
+		if(orderPredicate == "Name"){
+		if(tuplesResult.size()==3){
+			turn = new Tuple(tuplesResult.get(2).getAttributeList());
+			tuplesResult.remove(2);
+			return turn;
+		}
+		
+		if(tuplesResult.size()==2){
+			turn = new Tuple(tuplesResult.get(0).getAttributeList());
+			tuplesResult.remove(0);
+			return turn;
+		}
+		
+		if(tuplesResult.size()==1){
+			turn = new Tuple(tuplesResult.get(0).getAttributeList());
+			tuplesResult.remove(0);
+			return turn;
+		}
+		
+		if(tuplesResult.size()==0){
+			return turn;
+		}
+		}
+		
+		else{
+			
+			int count = 0;
+			for(int i=0;i<tuplesResult.size();i++){
+				a = (int) tuplesResult.get(i).getAttributeValue(0);
+				for(int j=0;j<tuplesResult.size();j++){
+					b = (int) tuplesResult.get(j).getAttributeValue(0);
+					if(a<b){
+						count++;
+					}
+					if(count == tuplesResult.size()-1){
+						turn = new Tuple(tuplesResult.get(i).getAttributeList());
+						tuplesResult.remove(i);
+						return turn;
+					}
+				}
+				
+			}
+		}
+		
 		return null;
 		
 	}
